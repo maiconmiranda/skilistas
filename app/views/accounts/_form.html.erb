@@ -1,0 +1,72 @@
+<%= form_with(model: account, local: true) do |form| %>
+<% if account.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(account.errors.count, "error") %> prohibited this account from being saved:</h2>
+
+  <ul>
+    <% account.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field">
+  <%= form.label :first_name %>
+  <%= form.text_field :first_name %>
+</div>
+
+<div class="field">
+  <%= form.label :last_name %>
+  <%= form.text_field :last_name %>
+</div>
+
+<div class="field">
+  <%= form.label :mobile %>
+  <%= form.text_field :mobile %>
+</div>
+
+<div class="field">
+  <%= form.label :address %>
+  <%= form.text_field :address %>
+</div>
+
+<div class="field">
+  <%= form.label :postcode %>
+  <%= form.number_field :postcode %>
+</div>
+
+<div class="field">
+  <%= form.label :suburb %>
+  <%= form.text_field :suburb %>
+</div>
+
+<div class="field">
+  <%= form.label :social_media %>
+  <%= form.text_field :social_media %>
+</div>
+
+<div class="field">
+  <%= form.label :business_name %>
+  <%= form.text_field :business_name %>
+</div>
+
+<div class="field">
+  <%= form.label :abn %>
+  <%= form.text_field :abn %>
+</div>
+
+<div class="field">
+  <%= form.label :phone %>
+  <%= form.text_field :phone %>
+</div>
+
+<div class="field">
+  <%= form.label :website %>
+  <%= form.text_field :website %>
+</div>
+
+<div class="actions">
+  <%= form.submit %>
+</div>
+<% end %>

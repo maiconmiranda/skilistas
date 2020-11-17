@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
 
 
   def show
+    @profiles = @category.profiles
   end
 
  

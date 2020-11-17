@@ -21,15 +21,10 @@
       <td><%= profile.category_id %></td>
       <td><%= profile.user_id %></td>
       <td><%= link_to 'Show', profile %></td>
-      <% if current_user || current_user.role == "admin"%>
+      <% if user_signed_in? && current_user == @profile.user %>
       <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
-      <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
     </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Profile', new_profile_path %>

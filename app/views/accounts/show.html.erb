@@ -65,11 +65,13 @@
   <%= @account.user.email %>
 </p>
 
-<%= link_to 'Edit', edit_account_path(@account) %> |
 <% if user_signed_in? &&  current_user.profile.blank? %>
 <%= link_to "Create Profile", new_profile_path %>
 <% else %>
 <%= link_to "View Profile", profile_path(current_user.profile) %>
 <%end%>
+<% if user_signed_in? && current_user %>
 <%= link_to "Update Account", edit_account_path %>
+<%end%>
+
 <%= link_to 'Back', root_path %>

@@ -5,5 +5,15 @@
   <%= @category.name %>
 </p>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<div>
+  <% @profiles.each do |profile| %>
+  <div class="panel-heading">
+    <%= link_to profile.title, profile ,class:"btn btn-primary btn-block" %>
+
+  </div>
+  <% end %>
+
+  <% if user_signed_in? && current_user.role == "admin" %>
+  <%= link_to 'Edit', edit_category_path(@category) %> |
+  <% end %>
+  <%= link_to 'Back', :back %>

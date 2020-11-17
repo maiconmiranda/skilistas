@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= image_tag @profile.picture if @profile.picture.attached? %>
+
 <p>
   <strong>Title:</strong>
   <%= @profile.title %>

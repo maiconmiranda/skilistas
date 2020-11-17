@@ -26,6 +26,11 @@
   <%= form.select :category_id ,Category.all.pluck(:name,:id),{prompt:'select'} %>
 </div>
 
+<div class="field">
+  <%= form.label :picture %>
+  <%= form.file_field :picture, accept: 'image/png, image/jpg, image/jpeg' %>
+</div>
+
 <div class="actions">
   <%= form.submit %>
 </div>

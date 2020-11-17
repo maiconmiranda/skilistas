@@ -66,4 +66,10 @@
 </p>
 
 <%= link_to 'Edit', edit_account_path(@account) %> |
-<%= link_to 'Back', accounts_path %>
+<% if user_signed_in? &&  current_user.profile.blank? %>
+<%= link_to "Create Profile", new_profile_path %>
+<% else %>
+<%= link_to "View Profile", profile_path(current_user.profile) %>
+<%end%>
+<%= link_to "Update Account", edit_account_path %>
+<%= link_to 'Back', root_path %>

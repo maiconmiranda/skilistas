@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index, :show]
  
   def index
     @profiles = Profile.all
@@ -20,26 +20,27 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
+    @profile.user_id = current_user.id
       if @profile.save
-        format.html { redirect_to @profile, notice: 'Profile was successfully created.'}
+      redirect_to @profile, notice: 'Profile was successfully created.'
       else
-        format.html { render :new }
+      render :new
       end
   end
 
 
   def update
       if @profile.update(profile_params)
-        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
+      redirect_to @profile, notice: 'Profile was successfully updated.'
       else
-        format.html { render :edit }
+      render :edit
       end
   end
 
   def destroy
     @profile.destroy
     respond_to do |format|
-      format.html { redirect_to profiles_url, notice: 'Profile was successfully destroyed.'}
+    redirect_to profiles_url, notice: 'Profile was successfully destroyed.'
     end
   end
 

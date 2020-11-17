@@ -4,10 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :account, dependent: :destroy    
-  has_one :profile
+  has_one :profile, dependent: :destroy
 
   attr_writer :login
-  
+
   validates :email, uniqueness: true
   validates :username, uniqueness: true
   validate :validate_username

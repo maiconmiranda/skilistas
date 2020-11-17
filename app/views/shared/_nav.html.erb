@@ -1,19 +1,26 @@
-<nav>
-  <%= link_to 'Home', root_path %>
-
-  <% if user_signed_in? && current_user.role == "admin" %>
-  <%= link_to 'Admin Area', '#' %>
-  <% end %>
-  <% if user_signed_in? %>
-  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-  <% if user_signed_in? && current_user.account.blank?%>
-  <%= link_to 'Create Account', new_account_path %>
-  <% else %>
-  <%= link_to 'My Account', account_path(current_user.account.id) %>
-  <%end%>
-  <% else %>
-  <%= link_to 'Login', new_user_session_path %>
-  <%= link_to 'Sign Up', new_user_registration_path %>
-  <% end %>
-
-</nav>
+<div class="header-inside">
+  <div class="logo-area"><%= image_tag "logo.png" %></div>
+  <nav class="nav-area">
+    <%= link_to 'Home', root_path %>
+    <% if user_signed_in? && current_user.role == "admin" %>
+    <%= link_to 'Admin Area', '#' %>
+    <% end %>
+    <% if user_signed_in? %>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+    <% if user_signed_in? && current_user.account.blank?%>
+    <%= link_to 'Create Account', new_account_path %>
+    <% else %>
+    <%= link_to 'My Account', account_path(current_user.account.id) %>
+    <%end%>
+    <% else %>
+    <%= link_to 'Login', new_user_session_path %>
+    <%= link_to 'Sign Up', new_user_registration_path %>
+    <% end %>
+  </nav>
+</div>
+<div class="icons-header">
+  <div class="icons-area"><%= image_tag "icons.png" %></div>
+  <div class="text-icons">
+    <h2>Services for hire</h2>
+  </div>
+</div>

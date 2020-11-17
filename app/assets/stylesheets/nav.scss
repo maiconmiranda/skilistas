@@ -1,0 +1,129 @@
+.alert {
+  position: absolute;
+}
+
+
+.header-container {
+  background-color: #2A0080;
+  height: 630px;
+}
+.logo-area img {
+  height: 300px;
+  padding-top: 25px;
+  padding-left: 60px;
+}
+
+.nav-area {
+  padding-top: 45px;
+  a {
+    text-decoration: none;
+    color: white;
+    padding-right: 158px;
+    font-family: 'Lato', sans-serif;
+  }
+}
+.icons-area {
+  text-align: center;
+}
+.text-icons {
+  color: white;
+  font-family: 'Caveat', cursive;
+  text-align-last: center;
+  h2 {
+    font-size: 62px;
+  }
+}
+.article-title {
+  padding-top: 50px;
+  h3  {
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    color: #2A0080;
+    font-size: 2.75rem;
+  }
+  
+}
+.article-con {
+  margin-left: 200px;
+  margin-right: 200px;
+  padding-top: 61px;
+  padding-bottom: 100px;;
+ p {
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-size: 25px;
+  }
+}
+.category-nav {
+  height: 85px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #020137;
+  a {
+    padding-top: 33px;
+    margin-left: 16px;
+    margin-right: 16px;
+    color: white;
+    font-family: 'Prompt', sans-serif;
+    text-decoration: none;
+  }
+}
+
+.category-nav a:hover {
+  color: #FF05E5;
+  border-bottom: 4px solid #FF05E5;
+}
+
+.card-wrp {
+  margin: 164px;
+  margin-top: 100px;
+  
+}
+
+.card {display:inline-block;}
+.card-body { text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.card-body:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.sign-ad {
+  display: flex;
+  flex-direction: row;
+  background: #3E24BE;
+  background: -webkit-radial-gradient(center, #3E24BE, #3A438E);
+  background: -moz-radial-gradient(center, #3E24BE, #3A438E);
+  background: radial-gradient(ellipse at center, #3E24BE, #3A438E);
+  justify-content: space-evenly;
+  height: 150px;
+  align-items: center;
+}
+
+.img-mix-content {
+  h3 {
+    color: aliceblue;
+  }
+}
+.text-sign {
+  p {
+    color: aliceblue;
+    text-align: center;
+  }
+}
+.reviews {
+  height: 250px;
+  text-align: center;
+  margin-top: 25px;
+}
+
+footer {
+  height: 150px;
+  text-align: center;
+  background-color:  #2A0080;
+  h1 {
+    color: white;
+    padding-top: 50px;
+  }
+}

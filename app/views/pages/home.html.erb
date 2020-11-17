@@ -1,50 +1,45 @@
-<h1>Pages#home</h1>
-
-<h1>Profiles</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-
-  <div>
+<%= render 'shared/home_body' %>
+<div class="category-nav">
+  <% @categories.each do |category| %>
+  <%= link_to category.name, category_path(category) %>
+  <% end %>
+</div>
+<div class="card-wrp">
+  <div class="card-deck">
     <% @profiles.each do |profile| %>
-    <tr>
-      <td><%= profile.title %></td>
-      <td><%= profile.description %></td>
-      <td><%= profile.category_id %></td>
-      <td><%= profile.user_id %></td>
-      <%= image_tag profile.picture if profile.picture.attached? %>
-      <td><%= link_to 'Show', profile %></td>
-    </tr>
+
+    <div class="card" style="min-width: 18rem;">
+      <%= image_tag profile.picture, class: 'card-img-top', width: 200 if profile.picture.attached?%>
+      <div class="card-body">
+        <h5 class="card-title"><%= profile.title %></h5>
+        <p class="card-text"><%= profile.description %></p>
+        <%= link_to 'Show', profile, class: "btn btn-primary" %>
+      </div>
+
+    </div>
     <% end %>
   </div>
+</div>
 
+<div class="sign-ad">
+  <div class="img-logo">
+    <%= image_tag "mix-logo"%>
+  </div>
+  <div class="img-mix-content">
+    <h3>ARE YOU A PROFESSIONAL?</h3>
+    <div class="text-sign">
+      <p>Sign-up and let the others know you</p>
+    </div>
+  </div>
+  <div class="sign-but">
+    <%= link_to 'Sign Up', new_user_registration_path, class:"btn btn-danger" %>
+  </div>
+</div>
 
+<div class="reviews">
+  <h3> OUR REVIEWS </h3>
+</div>
 
-  <h1>Categories</h1>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Category</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @categories.each do |category| %>
-      <tr>
-        <td><%= link_to category.name, category_path(category) %></td>
-
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+<footer class="footer">
+  <h1>Footer</h1>
+</footer>

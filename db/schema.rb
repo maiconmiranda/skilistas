@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_17_043131) do
+ActiveRecord::Schema.define(version: 2020_11_17_062420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 2020_11_17_043131) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string "description"
+    t.bigint "user_id", null: false
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["profile_id"], name: "index_comments_on_profile_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -49,6 +59,16 @@ ActiveRecord::Schema.define(version: 2020_11_17_043131) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_profiles_on_category_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "ratting"
+    t.bigint "user_id", null: false
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["profile_id"], name: "index_reviews_on_profile_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,6 +88,10 @@ ActiveRecord::Schema.define(version: 2020_11_17_043131) do
   end
 
   add_foreign_key "accounts", "users"
+  add_foreign_key "comments", "profiles"
+  add_foreign_key "comments", "users"
   add_foreign_key "profiles", "categories"
   add_foreign_key "profiles", "users"
+  add_foreign_key "reviews", "profiles"
+  add_foreign_key "reviews", "users"
 end

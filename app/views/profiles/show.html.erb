@@ -19,6 +19,34 @@
   <strong>User:</strong>
   <%= @profile.user.username %>
 </p>
+
+<div class="star-rating" data-score=<%= @avg_review %>></div>
+<em><%= "#{@reviews.length} reviews" %></em>
+
+
+
+<% @reviews.each do |review| %>
+<div class="review">
+  <div class="star-rating" data-score="<%= review.ratting %>"></div>
+</div>
+<%= link_to "Leave a star Review", new_profile_review_path(@profile) %>
+<% end %>
+
+<%= link_to "Leave a star Review", new_profile_review_path(@profile), class: "btn btn-danger" %>
+<%= link_to "Write Comment", new_profile_comment_path(@profile), class: "btn btn-danger" %>
+
+<% @comments.each do |comment| %>
+<tr>
+  <td><%= comment.description %></td>
+  <td><%= link_to 'Edit', edit_profile_comment_path(@profile, comment) %></td>
+  <td><%= link_to 'Destroy', profile_comment_path(@profile.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
+<% end %>
+
+
+
+
+
 <% if user_signed_in? && current_user == @profile.user%>
 <%= link_to 'Edit', edit_profile_path(@profile) %>
 <% end %>
@@ -27,3 +55,15 @@
 <% else %>
 <%= link_to "Back", root_path %>
 <% end %>
+
+<script>
+  $(document).ready(function() {
+    $('.star-rating').raty({
+      readOnly: true,
+      score: function() {
+        return $(this).attr('data-score');
+      },
+      path: '/assets/'
+    });
+  });
+</script>

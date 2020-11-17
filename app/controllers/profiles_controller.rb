@@ -8,6 +8,14 @@ class ProfilesController < ApplicationController
 
 
   def show
+    @reviews = Review.where(profile_id: @profile.id).order("created_at DESC")
+    @comments = Comment.where(profile_id: @profile.id).order("created_at DESC")
+
+    if @reviews.blank?
+      @avg_review = 0
+    else
+      @avg_review = @reviews.average(:ratting).round(2)
+    end
   end
 
   def new

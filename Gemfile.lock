@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: a1ffab7246fe7a77438f9e582e5b2ffacba32bb6
+  branch: master
+  specs:
+    faker (2.14.0)
+      i18n (>= 1.6, < 2)
+
+GIT
   remote: https://github.com/king601/devise-bootstrapped.git
   revision: 59e23f0673c9a273be765ca26091c5792cd25fa7
   branch: bootstrap4
@@ -205,6 +213,7 @@ DEPENDENCIES
   cancancan
   devise
   devise-bootstrapped!
+  faker!
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.2)

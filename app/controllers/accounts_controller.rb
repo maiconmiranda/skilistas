@@ -1,8 +1,10 @@
 class AccountsController < ApplicationController
   before_action :set_account, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @accounts = Account.all
+    @users = User.all
   end
 
 

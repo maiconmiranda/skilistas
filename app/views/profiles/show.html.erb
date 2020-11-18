@@ -1,62 +1,69 @@
-<p id="notice"><%= notice %></p>
-
-<%= image_tag @profile.picture if @profile.picture.attached? %>
-
-<p>
-  <strong>Title:</strong>
-  <%= @profile.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @profile.description %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @profile.category.name %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @profile.user.username %>
-</p>
-
-<div class="star-rating" data-score=<%= @avg_review %>></div>
-<em><%= "#{@reviews.length} reviews" %></em>
-
-
-
-<% @reviews.each do |review| %>
-<div class="review">
-  <div class="star-rating" data-score="<%= review.ratting %>"></div>
+<div class="edit">
+  <% if user_signed_in? && current_user == @profile.user%>
+  <%= link_to 'Edit', edit_profile_path(@profile), class:"btn btn-primary"%>
+  <% end %>
+  <% if user_signed_in? && current_user == @profile.user %>
+  <%= link_to "Home", root_path, class:"btn btn-info"%>
+  <% else %>
+  <%= link_to "Back", root_path, class:"btn btn-info" %>
 </div>
-<%= link_to "Leave a star Review", new_profile_review_path(@profile) %>
+
 <% end %>
+<div class="profile-wrp">
 
-<%= link_to "Leave a star Review", new_profile_review_path(@profile), class: "btn btn-danger" %>
-<%= link_to "Write Comment", new_profile_comment_path(@profile), class: "btn btn-danger" %>
+  <div class="card" style="width: 35rem;">
+    <%= image_tag @profile.picture, class: "card-img-top" if @profile.picture.attached? %>
+    <div class="card-body">
 
-<% @comments.each do |comment| %>
-<tr>
-  <td><%= comment.description %></td>
-  <td><%= link_to 'Edit', edit_profile_comment_path(@profile, comment) %></td>
-  <td><%= link_to 'Destroy', profile_comment_path(@profile.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-</tr>
-<% end %>
+      <div class="recommendat">
+        <div class="star-rating" data-score=<%= @avg_review %>></div>
+        <em><%= "#{@reviews.length} recommendations" %></em>
+      </div>
+
+      <h5 class="card-title"><%= @profile.title %></h5>
+      <p class="card-text">Description: <%= @profile.description %></p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Category: <%= @profile.category.name %></li>
+      <li class="list-group-item">Username: <%= @profile.user.username %></li>
+      <li class="list-group-item">Name: <%= @profile.user.account.first_name %></li>
+      <li class="list-group-item">Mobile: <%= @profile.user.account.mobile %></li>
+      <li class="list-group-item">
+
+      </li>
+    </ul>
+    <div class="card-body">
+      <%= link_to "Leave Review", new_profile_review_path(@profile), class: "card-link" %>
+      <%= link_to "Write Comment", new_profile_comment_path(@profile), class: "card-link" %>
+    </div>
+  </div>
+
+
+  <div class="review">
+    <h3>Reviews</h3>
+    <% @reviews.each do |review| %>
+    <div class="in-review">
+      <div class="rating"><%=review.user.username%></div>
+      <div class="star-rating" data-score="<%= review.ratting %>"></div>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="comment">
+    <h3>Comments</h3>
+    <% @comments.each do |comment| %>
+    <div class="in-comment">
+      <%= comment.description %>
+      <%= link_to 'Edit', edit_profile_comment_path(@profile, comment) %>
+      <%= link_to 'Delete', profile_comment_path(@profile.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+    <% end %>
+  </div>
+</div>
 
 
 
 
-
-<% if user_signed_in? && current_user == @profile.user%>
-<%= link_to 'Edit', edit_profile_path(@profile) %>
-<% end %>
-<% if user_signed_in? && current_user == @profile.user%>
-<%= link_to "Home", root_path%>
-<% else %>
-<%= link_to "Back", root_path %>
-<% end %>
 
 <script>
   $(document).ready(function() {

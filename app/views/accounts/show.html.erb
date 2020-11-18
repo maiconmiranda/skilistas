@@ -1,69 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Account number:</strong>
-  <%= @account.account_number %>
-</p>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <div class="card-header">
+      <h5 class="card-title"><strong>Account number:</strong><%= @account.account_number %></h5>
+    </div>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><strong>First name:</strong><%= @account.first_name %></li>
+    <li class="list-group-item"><strong>Last name:</strong><%= @account.last_name %></li>
+    <li class="list-group-item"><strong>email:</strong><%= @account.user.email %></li>
+    <li class="list-group-item"><strong>Mobile:</strong><%= @account.mobile %></li>
+    <li class="list-group-item"><strong>Address:</strong><%= @account.address %></li>
+    <li class="list-group-item"><strong>Postcode:</strong><%= @account.postcode %></li>
+    <li class="list-group-item"><strong>Suburb:</strong><%= @account.suburb %></li>
+    <li class="list-group-item"><strong>Social media:</strong><%= @account.social_media %></li>
+    <li class="list-group-item"><strong>Business name:</strong><%= @account.business_name %></li>
+    <li class="list-group-item"><strong>Abn:</strong><%= @account.abn %></li>
+    <li class="list-group-item"><strong>Phone:</strong><%= @account.phone %></li>
+    <li class="list-group-item"><strong>Website:</strong><%= @account.website %></li>
 
-<p>
-  <strong>First name:</strong>
-  <%= @account.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @account.last_name %>
-</p>
-
-<p>
-  <strong>Mobile:</strong>
-  <%= @account.mobile %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @account.address %>
-</p>
-
-<p>
-  <strong>Postcode:</strong>
-  <%= @account.postcode %>
-</p>
-
-<p>
-  <strong>Suburb:</strong>
-  <%= @account.suburb %>
-</p>
-
-<p>
-  <strong>Social media:</strong>
-  <%= @account.social_media %>
-</p>
-
-<p>
-  <strong>Business name:</strong>
-  <%= @account.business_name %>
-</p>
-
-<p>
-  <strong>Abn:</strong>
-  <%= @account.abn %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @account.phone %>
-</p>
-
-<p>
-  <strong>Website:</strong>
-  <%= @account.website %>
-</p>
-
-<p>
-  <strong>email:</strong>
-  <%= @account.user.email %>
-</p>
+  </ul>
+</div>
 
 <% if user_signed_in? &&  current_user.profile.blank? %>
 <%= link_to "Create Profile", new_profile_path %>

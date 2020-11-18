@@ -4,22 +4,28 @@
   <%= link_to category.name, category_path(category) %>
   <% end %>
 </div>
-<div class="card-wrp">
-  <div class="card-deck">
-    <% @profiles.each do |profile| %>
 
-    <div class="card" style="min-width: 18rem;">
-      <%= image_tag profile.picture, class: 'card-img-top', width: 200 if profile.picture.attached?%>
-      <div class="card-body">
-        <h5 class="card-title"><%= profile.title %></h5>
-        <p class="card-text"><%= profile.description %></p>
-        <%= link_to 'Show', profile, class: "btn btn-primary" %>
+<div class="row">
+  <div class="card-columns">
+    <div>
+      <% @profiles.each do |profile| %>
+
+      <div class="card" style="widh: 25rem;">
+        <%= image_tag profile.picture, class: 'card-img-top', width: 200 if profile.picture.attached?%>
+        <div class="card-body">
+          <h5 class="card-title"><%= profile.title %></h5>
+          <p class="card-text"><%= profile.description %></p>
+          <%= link_to 'Show', profile, class: "btn btn-primary" %>
+        </div>
       </div>
 
+      <% end %>
     </div>
-    <% end %>
   </div>
 </div>
+
+
+
 
 <div class="sign-ad">
   <div class="img-logo">
@@ -43,3 +49,15 @@
 <footer class="footer">
   <h1>Footer</h1>
 </footer>
+
+<script>
+  $(document).ready(function() {
+    $('.star-rating').raty({
+      readOnly: true,
+      score: function() {
+        return $(this).attr('data-score');
+      },
+      path: '/assets/'
+    });
+  });
+</script>

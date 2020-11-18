@@ -49,3 +49,4 @@ gem 'devise'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
 
 gem 'cancancan'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'

@@ -1,3 +1,57 @@
-// Place all the styles related to the Profiles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.profile-wrp {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 100px;
+  margin-bottom: 100px;
+}
+.edit {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.comment {
+  h3 {
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    font-size: 35px;
+  color: #2A0080;
+  }
+}
+
+.in-comment {
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 20px;
+  padding-bottom: 20px;
+  box-shadow: 10px 10px 5px #888;
+  margin-bottom: 20px;
+}
+
+.review {
+   h3 {
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    font-size: 35px;
+  color: #2A0080;
+  }
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.in-review {
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 20px;
+  padding-bottom: 20px;
+  box-shadow: 10px 10px 5px #888;
+  margin-bottom: 20px;
+ 
+}
+.recommendat {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-family: 'Lato', sans-serif;
+}

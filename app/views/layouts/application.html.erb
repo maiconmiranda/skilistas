@@ -19,17 +19,11 @@
 </head>
 
 <body>
-  <div class="grid-container">
-    <div class="header-container">
-      <%= render 'shared/nav' %>
-      <%= render 'shared/alert' %>
-    </div>
-
-    <div class="article-body">
-      <%= yield %>
-    </div>
-
+  <div class="header-container">
+    <%= render 'shared/nav' %>
+    <div class="fixed-top"><%= render 'shared/alert' %></div>
   </div>
+  <%= yield %>
 </body>
 
 </html>

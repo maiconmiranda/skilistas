@@ -1,3 +1,11 @@
-@import "bootstrap/scss/bootstrap";
+@import 'bootstrap/scss/bootstrap';
 @import "nav";
-@import "grid";
+@import "categories";
+@import "profiles";
+@import "accounts";
+@import "pages";
+
+body, html{
+  margin:0;
+  padding:0;
+}

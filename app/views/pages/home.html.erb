@@ -11,11 +11,11 @@
       <% @profiles.each do |profile| %>
 
       <div class="card" style="widh: 25rem;">
-        <%= image_tag profile.picture, class: 'card-img-top', width: 200 if profile.picture.attached?%>
+        <% if profile.picture.attached? %> <%= image_tag profile.picture, class: 'card-img-top', width: 200 %><% else %> <%= image_tag 'placeholder', class: 'card-img-top', width: 200 %><%end%>
         <div class="card-body">
           <h5 class="card-title"><%= profile.title %></h5>
           <p class="card-text"><%= profile.description %></p>
-          <%= link_to 'Show', profile, class: "btn btn-primary" %>
+          <%= link_to 'Show', profile, class: "btn btn-light btn-lg btn-block" %>
         </div>
       </div>
 
@@ -23,6 +23,7 @@
     </div>
   </div>
 </div>
+
 
 
 
@@ -56,4 +57,21 @@
       path: '/assets/'
     });
   });
+</script>
+
+<script>
+  // Get cards
+  var cards = $('.card-body');
+  var maxHeight = 0;
+
+  // Loop all cards and check height, if bigger than max then save it
+  for (var i = 0; i < cards.length; i++) {
+    if (maxHeight < $(cards[i]).outerHeight()) {
+      maxHeight = $(cards[i]).outerHeight();
+    }
+  }
+  // Set ALL card bodies to this height
+  for (var i = 0; i < cards.length; i++) {
+    $(cards[i]).height(maxHeight);
+  }
 </script>

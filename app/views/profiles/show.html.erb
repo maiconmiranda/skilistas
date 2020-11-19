@@ -5,14 +5,14 @@
   <% if user_signed_in? && current_user == @profile.user %>
   <%= link_to "Home", root_path, class:"btn btn-info"%>
   <% else %>
-  <%= link_to "Back", root_path, class:"btn btn-info" %>
+  <%= link_to "Back", root_path, class:"btn btn-primary btn-lg" %>
 </div>
 
 <% end %>
 <div class="profile-wrp">
 
   <div class="card" style="width: 35rem;">
-    <%= image_tag @profile.picture, class: "card-img-top" if @profile.picture.attached? %>
+    <% if @profile.picture.attached? %> <%= image_tag @profile.picture, class: 'card-img-top', width: 200 %><% else %> <%= image_tag 'placeholder', class: 'card-img-top', width: 200 %><%end%>
     <div class="card-body">
 
       <div class="recommendat">
@@ -20,21 +20,31 @@
         <em><%= "#{@reviews.length} recommendations" %></em>
       </div>
 
-      <h5 class="card-title"><%= @profile.title %></h5>
+      <h3 class="card-title"><%= @profile.title %></h3>
       <p class="card-text">Description: <%= @profile.description %></p>
     </div>
     <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <h5>Name: <%= @profile.user.account.first_name %></h5>
+      </li>
       <li class="list-group-item">Category: <%= @profile.category.name %></li>
       <li class="list-group-item">Username: <%= @profile.user.username %></li>
-      <li class="list-group-item">Name: <%= @profile.user.account.first_name %></li>
       <li class="list-group-item">Mobile: <%= @profile.user.account.mobile %></li>
+      <li class="list-group-item">Address: <%= @profile.user.account.address %></li>
+      <li class="list-group-item">Postcode: <%= @profile.user.account.postcode %></li>
+      <li class="list-group-item">Suburb: <%= @profile.user.account.address %></li>
+      <li class="list-group-item">Social Media: <%= @profile.user.account.social_media %></li>
       <li class="list-group-item">
-
+        <h3>Company details</h3>
+      </li>
+      <li class="list-group-item">Address: <%= @profile.user.account.business_name %></li>
+      <li class="list-group-item">Phone: <%= @profile.user.account.phone %></li>
+      <li class="list-group-item">Website: <%= @profile.user.account.website %></li>
       </li>
     </ul>
     <div class="card-body">
-      <%= link_to "Leave Review", new_profile_review_path(@profile), class: "card-link" %>
-      <%= link_to "Write Comment", new_profile_comment_path(@profile), class: "card-link" %>
+      <%= link_to "Leave Review", new_profile_review_path(@profile), class:"btn btn-primary" %>
+      <%= link_to "Write Comment", new_profile_comment_path(@profile), class:"btn btn-success" %>
     </div>
   </div>
 
@@ -43,7 +53,8 @@
     <h3>Reviews</h3>
     <% @reviews.each do |review| %>
     <div class="in-review">
-      <div class="rating"><%=review.user.username%></div>
+      <div class="rating"><strong>@<%=review.user.username%></strong></div>
+      <div class="rating-created">Created at <br><%=review.user.created_at.strftime('%e of %B  at %l:%M %p')%></div>
       <div class="star-rating" data-score="<%= review.ratting %>"></div>
     </div>
     <% end %>
@@ -53,6 +64,7 @@
     <h3>Comments</h3>
     <% @comments.each do |comment| %>
     <div class="in-comment">
+      <p><strong>💬<%= comment.user.username %></strong></p>
       <%= comment.description %>
       <%= link_to 'Edit', edit_profile_comment_path(@profile, comment) %>
       <%= link_to 'Delete', profile_comment_path(@profile.id), method: :delete, data: { confirm: 'Are you sure?' } %>

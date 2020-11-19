@@ -30,6 +30,7 @@
 <%end%>
 <% if user_signed_in? && current_user %>
 <%= link_to "Update Account", edit_account_path %>
+<%= link_to "Delete Account", account_path(@account), method: :delete, data: { confirm: 'Are you sure?' } %>
 <%end%>
 
 <%= link_to 'Back', root_path %>

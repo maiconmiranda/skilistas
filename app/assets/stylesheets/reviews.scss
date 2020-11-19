@@ -2,3 +2,25 @@
 .rating-created {
   font-size: smaller;
 }
+
+.review-new {
+  background: indianred;
+  margin: 100px 250px;
+  border: 1px solid cornflowerblue;
+  border-radius: 2%;
+  padding: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  text-align: center;
+  h1 {
+    font-family: 'Caveat', cursive;
+  color: #2A0080;
+  margin-bottom: 50px;
+  }
+  .field {
+    margin-bottom: 30px;
+  }
+
+  .actions {
+    margin-bottom: 30px;
+  }
+}

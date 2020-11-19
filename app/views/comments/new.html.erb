@@ -1,5 +1,7 @@
-<h1>New Comment</h1>
+<div class="review-new">
+  <h1>New Comment</h1>
 
-<%= render 'form', comment: @comment %>
+  <%= render 'form', comment: @comment %>
 
-<%= link_to 'Back', profile_path(@profile) %>
+  <%= link_to 'Back', profile_path(@profile), class:"btn btn-light" %>
+</div>

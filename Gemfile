@@ -45,8 +45,18 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+#Add User authentication
 gem 'devise'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
 
+#Add user authorization
 gem 'cancancan'
+
+#Generate random names for db seed
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
+#Amazon Image Upload
+gem "aws-sdk-s3", "~> 1.84"
+
+#Bootstrap for forms
+gem "bootstrap_form", "~> 4.0"
